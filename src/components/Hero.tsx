@@ -1,38 +1,75 @@
 import React from 'react';
-import { ChevronRight } from 'lucide-react';
+import { Mail, FileText, Linkedin, Github } from 'lucide-react';
 import TypingEffect from './TypingName';
 
 const Hero: React.FC = () => {
-  return (
-    <section id="home" className="relative bg-white dark:bg-gray-900 flex items-center justify-center min-h-screen text-center transition-colors duration-200 before:absolute before:inset-0 before:bg-[radial-gradient(circle,_rgba(0,0,0,0.1)_1px,_transparent_1px)] before:bg-[size:16px_16px] before:opacity-30">
+  const socialLinks = [
+    { icon: <Mail size={28} />, href: 'mailto:info.amanmauryas@example.com', delay: 0 },
+    { icon: <Github size={28} />, href: 'https://github.com/amanmauryas', delay: 0.1 },
+    { icon: <Linkedin size={28} />, href: 'https://linkedin.com/in/amanmauryas', delay: 0.2 },
+    { icon: <FileText size={28} />, href: '/resume.pdf', delay: 0.3 },
+  ];
 
-      <div className="max-w-3xl mx-auto px-4">
-        <h1 className="text-4xl font-extrabold text-gray-900 dark:text-white sm:text-5xl md:text-6xl">
-          <span className="block">Aman Kumar Maurya</span>
-          <TypingEffect />
-        </h1>
-        <p className="mt-4 text-lg text-gray-500 dark:text-gray-400">
-          Data Science Student at IITM | Minor in CSE and GenAI IIT Mandi <br />
-          Frontend Developer | Python | Neuroscience <br />
-          Building something amazing in HealTech
-        </p>
-        <div className="mt-6 flex flex-col sm:flex-row sm:justify-center gap-4">
+  return (
+    <div className="relative h-full w-full flex items-center justify-center">
+      {/* Background pattern */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle,_rgba(255,255,255,0.1)_1px,_transparent_1px)] bg-[size:16px_16px] opacity-20"></div>
+
+      {/* Floating Social Icons */}
+      <div className="fixed right-8 top-1/2 transform -translate-y-1/2 flex flex-col gap-8">
+        {socialLinks.map((link, index) => (
           <a
-            href="#projects"
-            className="px-8 py-3 text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 transition-colors"
+            key={index}
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white/60 hover:text-white transform hover:scale-110 transition-all duration-300 animate-float"
+            style={{ animationDelay: `${link.delay}s` }}
           >
-            View Projects
+            {link.icon}
           </a>
-          <a
-            href="#contact"
-            className="px-8 py-3 text-base font-medium rounded-md text-indigo-600 dark:text-indigo-400 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 border border-indigo-100 dark:border-gray-700 hover:border-indigo-200 dark:hover:border-gray-600 transition-colors flex items-center justify-center"
-          >
-            Contact Me
-            <ChevronRight className="ml-2 h-5 w-5" />
-          </a>
+        ))}
+      </div>
+
+      {/* Main content */}
+      <div className="relative z-10 max-w-4xl mx-auto px-6">
+        <div className="text-center space-y-6">
+          <h1 className="text-6xl md:text-8xl font-bold tracking-tight text-white">
+            <span className="block">Hi</span>
+            <span className="block mt-2">
+              I'm Aman Maurya
+            </span>
+          </h1>
+          <div className="text-2xl md:text-3xl text-white/80">
+            <TypingEffect />
+          </div>
+          <p className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto">
+            Data Science Student at IITM | Minor in CSE and GenAI IIT Mandi
+            <br />
+            Building <a href="http://healmymind.in">healmymind.in</a>
+          </p>
         </div>
       </div>
-    </section>
+
+      {/* Decorative line */}
+      <svg
+        className="absolute bottom-0 left-0 right-0 opacity-10"
+        width="100%"
+        height="2"
+        preserveAspectRatio="none"
+      >
+        <line
+          x1="0"
+          y1="1"
+          x2="100%"
+          y2="1"
+          stroke="currentColor"
+          strokeWidth="2"
+          vectorEffect="non-scaling-stroke"
+          className="text-white"
+        />
+      </svg>
+    </div>
   );
 };
 

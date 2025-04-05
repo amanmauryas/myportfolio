@@ -1,149 +1,124 @@
 import React from 'react';
+import { Code2, Database, Cloud, Smartphone, Palette, Server } from 'lucide-react';
 
 const Skills: React.FC = () => {
   const skillCategories = [
     {
-      title: 'Programming Languages',
+      icon: <Code2 className="w-6 h-6" />,
+      title: 'Frontend Development',
       skills: [
-        { name: 'Python', level: 80 },
-        // { name: 'Java', level: 85 },
-        // { name: 'C/C++', level: 80 },
-        { name: 'JavaScript', level: 70 },
-        // { name: 'TypeScript', level: 75 },
-      ],
+        { name: 'React', level: 90 },
+        { name: 'TypeScript', level: 85 },
+        { name: 'JavaScript', level: 90 },
+        { name: 'HTML/CSS', level: 95 },
+        { name: 'Tailwind CSS', level: 85 },
+        { name: 'Next.js', level: 80 }
+      ]
     },
     {
-      title: 'Web Development',
+      icon: <Server className="w-6 h-6" />,
+      title: 'Backend Development',
       skills: [
-        // { name: 'React', level: 85 },
-        // { name: 'Node.js', level: 80 },
-        { name: 'HTML/CSS', level: 90 },
-        // { name: 'Express.js', level: 75 },
-        // { name: 'MongoDB', level: 70 },
-      ],
+        { name: 'Node.js', level: 85 },
+        { name: 'Express', level: 80 },
+        { name: 'Python', level: 90 },
+        { name: 'Django', level: 75 },
+        { name: 'RESTful APIs', level: 85 },
+        { name: 'GraphQL', level: 70 }
+      ]
     },
     {
-      title: 'Data Science & ML',
+      icon: <Database className="w-6 h-6" />,
+      title: 'Database & ORM',
       skills: [
-        // { name: 'TensorFlow', level: 80 },
-        // { name: 'PyTorch', level: 75 },
-        // { name: 'Scikit-Learn', level: 85 },
-        { name: 'Pandas', level: 90 },
-        { name: 'NumPy', level: 90 },
-      ],
+        { name: 'MongoDB', level: 85 },
+        { name: 'PostgreSQL', level: 80 },
+        { name: 'MySQL', level: 75 },
+        { name: 'Mongoose', level: 80 },
+        { name: 'Prisma', level: 70 },
+        { name: 'SQL', level: 85 }
+      ]
     },
     {
-      title: 'Tools & Technologies',
+      icon: <Cloud className="w-6 h-6" />,
+      title: 'Cloud & DevOps',
       skills: [
+        { name: 'AWS', level: 75 },
+        { name: 'Docker', level: 80 },
         { name: 'Git', level: 90 },
-        // { name: 'Docker', level: 75 },
-        { name: 'VS Code', level: 70 },
+        { name: 'CI/CD', level: 75 },
         { name: 'Linux', level: 85 },
-        { name: 'Jupyter', level: 90 },
-      ],
+        { name: 'Nginx', level: 70 }
+      ]
     },
+    {
+      icon: <Smartphone className="w-6 h-6" />,
+      title: 'Mobile Development',
+      skills: [
+        { name: 'React Native', level: 80 },
+        { name: 'Flutter', level: 70 },
+        { name: 'iOS Development', level: 65 },
+        { name: 'Android Development', level: 65 },
+        { name: 'Expo', level: 75 },
+        { name: 'Mobile UI/UX', level: 80 }
+      ]
+    },
+    {
+      icon: <Palette className="w-6 h-6" />,
+      title: 'Design & Tools',
+      skills: [
+        { name: 'Figma', level: 85 },
+        { name: 'Adobe XD', level: 80 },
+        { name: 'Photoshop', level: 75 },
+        { name: 'Illustrator', level: 70 },
+        { name: 'UI/UX Design', level: 85 },
+        { name: 'Responsive Design', level: 90 }
+      ]
+    }
   ];
 
   return (
-    <section id="skills" className="py-16 bg-white dark:bg-gray-800 transition-colors duration-200 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="lg:text-center">
-          <h2 className="text-base text-indigo-600 dark:text-indigo-400 font-semibold tracking-wide uppercase">Expertise</h2>
-          <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-            Technical Skills
-          </p>
-          <p className="mt-4 max-w-2xl text-xl text-gray-500 dark:text-gray-400 lg:mx-auto">
-            A comprehensive overview of my technical skills and proficiency levels.
-          </p>
-        </div>
+    <div className="relative h-full w-full p-8 overflow-y-auto">
+      {/* Background pattern */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle,_rgba(255,255,255,0.1)_1px,_transparent_1px)] bg-[size:16px_16px] opacity-20"></div>
 
-        <div className="mt-16">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-            {skillCategories.map((category, categoryIndex) => (
-              <div key={categoryIndex} className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 shadow-sm transition-colors duration-200">
-                <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">{category.title}</h3>
-                <div className="space-y-4">
-                  {category.skills.map((skill, skillIndex) => (
-                    <div key={skillIndex}>
-                      <div className="flex justify-between items-center mb-1">
-                        <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{skill.name}</span>
-                        <span className="text-sm font-medium text-gray-500 dark:text-gray-400">{skill.level}%</span>
-                      </div>
-                      <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
-                        <div
-                          className="bg-indigo-600 dark:bg-indigo-500 h-2.5 rounded-full"
-                          style={{ width: `${skill.level}%` }}
-                        ></div>
-                      </div>
-                    </div>
-                  ))}
+      <div className="relative z-10 max-w-4xl mx-auto">
+        <h2 className="text-4xl font-bold text-white mb-8">Skills & Expertise (Dummmy)</h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {skillCategories.map((category, index) => (
+            <div
+              key={index}
+              className="bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 p-6 hover:bg-white/10 transition-all duration-300"
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <div className="p-3 rounded-full bg-white/10 text-white/80">
+                  {category.icon}
                 </div>
+                <h3 className="text-xl font-semibold text-white">{category.title}</h3>
               </div>
-            ))}
-          </div>
-        </div>
 
-        <div className="mt-16">
-          <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Certifications</h3>
-          <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 shadow-sm transition-colors duration-200">
-            <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-              <li className="flex items-start">
-                <div className="flex-shrink-0">
-                  <svg className="h-5 w-5 text-indigo-500 dark:text-indigo-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <p className="ml-3 text-sm text-gray-700 dark:text-gray-300">
-                Introduction to computer science - CS50 Harvard University</p>
-              </li>
-              <li className="flex items-start">
-                <div className="flex-shrink-0">
-                  <svg className="h-5 w-5 text-indigo-500 dark:text-indigo-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <p className="ml-3 text-sm text-gray-700 dark:text-gray-300">
-                Couse on Computer Concept - NIELIT</p>
-              </li>
-              <li className="flex items-start">
-                <div className="flex-shrink-0">
-                  <svg className="h-5 w-5 text-indigo-500 dark:text-indigo-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <p className="ml-3 text-sm text-gray-700 dark:text-gray-300">
-                Opportunities in the LLM World - AI4Bharat</p>
-              </li>
-              <li className="flex items-start">
-                <div className="flex-shrink-0">
-                  <svg className="h-5 w-5 text-indigo-500 dark:text-indigo-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <p className="ml-3 text-sm text-gray-700 dark:text-gray-300">Full Stack Web Development - Udemy</p>
-              </li>
-              <li className="flex items-start">
-                <div className="flex-shrink-0">
-                  <svg className="h-5 w-5 text-indigo-500 dark:text-indigo-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <p className="ml-3 text-sm text-gray-700 dark:text-gray-300">
-                Roadmap for Success : Mastering Strategy Formulation with Chat GPT</p>
-              </li>
-              <li className="flex items-start">
-                <div className="flex-shrink-0">
-                  <svg className="h-5 w-5 text-indigo-500 dark:text-indigo-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <p className="ml-3 text-sm text-gray-700 dark:text-gray-300">Data Structures & Algorithms - IIT Madras</p>
-              </li>
-            </ul>
-          </div>
+              <div className="space-y-4">
+                {category.skills.map((skill, i) => (
+                  <div key={i}>
+                    <div className="flex justify-between mb-1">
+                      <span className="text-white/60">{skill.name}</span>
+                      <span className="text-white/40">{skill.level}%</span>
+                    </div>
+                    <div className="w-full bg-white/10 rounded-full h-2">
+                      <div
+                        className="bg-white/60 h-2 rounded-full transition-all duration-500"
+                        style={{ width: `${skill.level}%` }}
+                      ></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
