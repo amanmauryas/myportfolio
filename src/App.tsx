@@ -45,7 +45,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="flex h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 overflow-hidden">
+    <div className="flex h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 overflow-hidden font-['Ubuntu']">
       {/* Sidebar - Desktop */}
       <aside 
         className={`hidden md:flex flex-col fixed h-screen bg-black/50 backdrop-blur-sm border-r border-white/10 transition-all duration-300 z-10 ${
@@ -65,7 +65,13 @@ const App: React.FC = () => {
             {sections.map((section) => (
               <button
                 key={section.id}
-                onClick={() => setActiveSection(section.id)}
+                onClick={() => {
+                  setActiveSection(section.id);
+                  const element = document.getElementById(section.id);
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
                 className={`w-full flex items-center gap-4 px-4 py-3 rounded-lg transition-all duration-200 ${
                   activeSection === section.id
                     ? 'bg-white/10 text-white'
@@ -73,7 +79,7 @@ const App: React.FC = () => {
                 } ${isSidebarCollapsed ? 'justify-center' : ''}`}
               >
                 {section.icon}
-                {!isSidebarCollapsed && <span>{section.label}</span>}
+                {!isSidebarCollapsed && <span className="text-sm md:text-base">{section.label}</span>}
               </button>
             ))}
           </nav>
@@ -98,6 +104,10 @@ const App: React.FC = () => {
                 onClick={() => {
                   setActiveSection(section.id);
                   setIsMobileMenuOpen(false);
+                  const element = document.getElementById(section.id);
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
                 }}
                 className={`w-full flex items-center gap-4 px-4 py-3 rounded-lg mb-2 ${
                   activeSection === section.id
@@ -106,7 +116,7 @@ const App: React.FC = () => {
                 }`}
               >
                 {section.icon}
-                <span>{section.label}</span>
+                <span className="text-base">{section.label}</span>
               </button>
             ))}
           </nav>
@@ -117,7 +127,13 @@ const App: React.FC = () => {
       <main className={`flex-1 overflow-y-auto transition-all duration-300 ${
         isSidebarCollapsed ? 'md:ml-16' : 'md:ml-64'
       }`}>
-        {renderContent()}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {sections.map((section) => (
+            <div key={section.id} id={section.id} className="min-h-screen">
+              {renderContent()}
+            </div>
+          ))}
+        </div>
       </main>
     </div>
   );

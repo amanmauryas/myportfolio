@@ -66,14 +66,14 @@ const Projects: React.FC = () => {
   ];
 
   return (
-    <div className="relative h-full w-full p-8 overflow-y-auto">
+    <div className="relative h-full w-full p-4 sm:p-8 overflow-y-auto">
       {/* Background pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(circle,_rgba(255,255,255,0.1)_1px,_transparent_1px)] bg-[size:16px_16px] opacity-20"></div>
 
       <div className="relative z-10 max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-white mb-8">Featured Projects</h2>
+        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 sm:mb-8">Featured Projects</h2>
 
-        <div className="grid grid-cols-1 gap-8">
+        <div className="grid grid-cols-1 gap-6 sm:gap-8">
           {projects.map((project, index) => (
             <div
               key={index}
@@ -88,21 +88,21 @@ const Projects: React.FC = () => {
                 </div>
 
                 {/* Project Content */}
-                <div className="w-full md:w-2/3 p-6">
+                <div className="w-full md:w-2/3 p-4 sm:p-6">
                   <div className="flex items-start gap-4">
                     <div className="p-3 rounded-full bg-white/10 text-white/80">
                       {project.icon}
                     </div>
                     <div className="flex-1">
                       <h3 className="text-xl font-semibold text-white">{project.title}</h3>
-                      <p className="text-white/60 mt-2">{project.description}</p>
+                      <p className="text-white/60 mt-2 text-sm sm:text-base">{project.description}</p>
                       
                       {/* Technologies */}
                       <div className="mt-4 flex flex-wrap gap-2">
                         {project.technologies.map((tech, i) => (
                           <span
                             key={i}
-                            className="px-3 py-1 text-sm rounded-full bg-white/10 text-white/60"
+                            className="px-2 sm:px-3 py-1 text-xs sm:text-sm rounded-full bg-white/10 text-white/60"
                           >
                             {tech}
                           </span>
@@ -111,10 +111,10 @@ const Projects: React.FC = () => {
 
                       {/* Features */}
                       <div className="mt-4">
-                        <h4 className="text-white/80 font-medium mb-2">Key Features</h4>
-                        <ul className="grid grid-cols-2 gap-2">
+                        <h4 className="text-white/80 font-medium mb-2 text-sm sm:text-base">Key Features</h4>
+                        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                           {project.features.map((feature, i) => (
-                            <li key={i} className="flex items-center text-white/60">
+                            <li key={i} className="flex items-center text-white/60 text-sm sm:text-base">
                               <span className="w-1.5 h-1.5 rounded-full bg-white/60 mr-2"></span>
                               {feature}
                             </li>
@@ -123,12 +123,12 @@ const Projects: React.FC = () => {
                       </div>
 
                       {/* Links */}
-                      <div className="mt-6 flex gap-4">
+                      <div className="mt-6 flex flex-wrap gap-4">
                         <a
                           href={project.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center text-white/60 hover:text-white transition-colors"
+                          className="flex items-center text-white/60 hover:text-white transition-colors text-sm sm:text-base"
                         >
                           <Github className="w-5 h-5 mr-2" />
                           GitHub
@@ -137,7 +137,7 @@ const Projects: React.FC = () => {
                           href={project.demo}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center text-white/60 hover:text-white transition-colors"
+                          className="flex items-center text-white/60 hover:text-white transition-colors text-sm sm:text-base"
                         >
                           <ExternalLink className="w-5 h-5 mr-2" />
                           Live Demo
