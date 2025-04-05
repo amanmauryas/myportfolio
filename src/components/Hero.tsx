@@ -127,7 +127,7 @@ const Hero: React.FC = () => {
             >
               Contact Me
             </button>
-            <a
+            <a 
               href="https://drive.google.com/file/d/1JH-0BbYIUbOAeU7hp734nvGXq28S6vyH/view?usp=sharing"
               download="Aman_Maurya_Resume.pdf"
               className="px-6 py-3 rounded-lg bg-white/10 text-white hover:bg-white/20 transition-all duration-300 text-sm sm:text-base"
