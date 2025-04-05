@@ -12,36 +12,44 @@ const Hero: React.FC = () => {
     'IIT Mandi'
   ];
 
+  useEffect(() => {
+    const typingSpeed = 100;
+    const deletingSpeed = 50;
+    const pauseTime = 2000;
+
+    const timer = setTimeout(() => {
+      if (!isDeleting) {
+        if (currentIndex < institutions[currentInstitution].length) {
+          setTypedText(prev => prev + institutions[currentInstitution][currentIndex]);
+          setCurrentIndex(prev => prev + 1);
+        } else {
+          setIsDeleting(true);
+        }
+      } else {
+        if (currentIndex > 0) {
+          setTypedText(prev => prev.slice(0, -1));
+          setCurrentIndex(prev => prev - 1);
+        } else {
+          setIsDeleting(false);
+          setCurrentInstitution(prev => (prev + 1) % institutions.length);
+        }
+      }
+    }, isDeleting ? deletingSpeed : typingSpeed);
+
+    return () => clearTimeout(timer);
+  }, [currentIndex, isDeleting, currentInstitution]);
+
   const scrollToSection = (sectionId: string) => {
+    // Update the active section in the parent component
+    const event = new CustomEvent('sectionChange', { detail: sectionId });
+    window.dispatchEvent(event);
+    
+    // Scroll to the section
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
-
-  useEffect(() => {
-    const currentInstitutionText = institutions[currentInstitution];
-    const typingSpeed = 100;
-    const deletingSpeed = 50;
-    const pauseTime = 2000;
-
-    const timeout = setTimeout(() => {
-      if (!isDeleting && currentIndex < currentInstitutionText.length) {
-        setTypedText(currentInstitutionText.substring(0, currentIndex + 1));
-        setCurrentIndex(currentIndex + 1);
-      } else if (isDeleting && currentIndex > 0) {
-        setTypedText(currentInstitutionText.substring(0, currentIndex - 1));
-        setCurrentIndex(currentIndex - 1);
-      } else if (!isDeleting && currentIndex === currentInstitutionText.length) {
-        setTimeout(() => setIsDeleting(true), pauseTime);
-      } else if (isDeleting && currentIndex === 0) {
-        setIsDeleting(false);
-        setCurrentInstitution((currentInstitution + 1) % institutions.length);
-      }
-    }, isDeleting ? deletingSpeed : typingSpeed);
-
-    return () => clearTimeout(timeout);
-  }, [currentIndex, isDeleting, currentInstitution]);
 
   return (
     <div className="relative h-full w-full flex items-center justify-center p-4 sm:p-8">
@@ -51,7 +59,7 @@ const Hero: React.FC = () => {
       <div className="relative z-10 max-w-4xl w-full text-center flex flex-col items-center justify-center min-h-[80vh]">
         <div className="space-y-8">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white">
-            Hi, I'm <span className="text-white/60">Aman Maurya</span>
+            Hi! <br/>I'm <span className="font-large text-white/60">Aman Maurya</span>
           </h1>
           
           <div className="h-20 flex items-center justify-center">
@@ -119,6 +127,13 @@ const Hero: React.FC = () => {
             >
               Contact Me
             </button>
+            <a
+              href="https://drive.google.com/file/d/1JH-0BbYIUbOAeU7hp734nvGXq28S6vyH/view?usp=sharing"
+              download="Aman_Maurya_Resume.pdf"
+              className="px-6 py-3 rounded-lg bg-white/10 text-white hover:bg-white/20 transition-all duration-300 text-sm sm:text-base"
+            >
+              Resume
+            </a>
           </div>
         </div>
       </div>

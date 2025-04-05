@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Menu, X, Home, User, Briefcase, Code, Sparkles, GraduationCap, FileText } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Menu, X, Home, User, Briefcase, Code, Sparkles, GraduationCap, FileText, Mail } from 'lucide-react';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
@@ -7,11 +7,23 @@ import About from './components/About';
 import Experience from './components/Experience';
 import Academics from './components/Academics';
 import Freelance from './components/Freelance';
+import Contact from './components/Contact';
 
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSidebarCollapsed, setSidebarCollapsed] = useState(true);
+
+  useEffect(() => {
+    const handleSectionChange = (event: CustomEvent) => {
+      setActiveSection(event.detail);
+    };
+
+    window.addEventListener('sectionChange', handleSectionChange as EventListener);
+    return () => {
+      window.removeEventListener('sectionChange', handleSectionChange as EventListener);
+    };
+  }, []);
 
   const sections = [
     { id: 'home', label: 'Home', icon: <Home size={20} /> },
@@ -21,6 +33,7 @@ const App: React.FC = () => {
     { id: 'freelance', label: 'Freelance', icon: <FileText size={20} /> },
     { id: 'skills', label: 'Skills', icon: <Code size={20} /> },
     { id: 'experience', label: 'Fun Times', icon: <Sparkles size={20} /> },
+    { id: 'contact', label: 'Contact', icon: <Mail size={20} /> },
   ];
 
   const renderContent = () => {
@@ -39,6 +52,8 @@ const App: React.FC = () => {
         return <Skills />;
       case 'experience':
         return <Experience />;
+      case 'contact':
+        return <Contact />;
       default:
         return <Hero />;
     }
@@ -128,11 +143,9 @@ const App: React.FC = () => {
         isSidebarCollapsed ? 'md:ml-16' : 'md:ml-64'
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {sections.map((section) => (
-            <div key={section.id} id={section.id} className="min-h-screen">
-              {renderContent()}
-            </div>
-          ))}
+          <div id={activeSection} className="min-h-screen">
+            {renderContent()}
+          </div>
         </div>
       </main>
     </div>

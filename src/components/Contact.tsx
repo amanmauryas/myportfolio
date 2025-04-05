@@ -1,69 +1,98 @@
 import React from 'react';
-import { Github, Linkedin, Mail, FileText, Twitter } from 'lucide-react';
+import { Mail, MapPin, Phone, Github, Linkedin, Twitter } from 'lucide-react';
 
 const Contact: React.FC = () => {
   return (
-    <section id="contact" className="py-16 bg-gray-50 dark:bg-gray-900">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="lg:text-center">
-        <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase dark:text-indigo-400">
-          Get in Touch
-        </h2>
-        <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-          Contact Information
-        </p>
-        <p className="mt-4 max-w-2xl text-xl text-gray-500 dark:text-gray-300 lg:mx-auto">
-          Feel free to reach out for collaborations, opportunities, or just to say hello!
-        </p>
-      </div>
-  
-      <div className="mt-12">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
-            <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Contact Details</h3>
-            <div className="space-y-4">
-              <div className="flex items-start">
-                <div className="flex-shrink-0">
-                  <Mail className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />
-                </div>
-                <div className="ml-3 text-base text-gray-500 dark:text-gray-300">
-                  <p>24f1001603@ds.study.iitm.ac.in</p>
-                  <p className="mt-1">Professional inquiries only, please.</p>
-                </div>
+    <div className="min-h-screen flex items-center justify-center p-4 sm:p-8">
+      <div className="max-w-4xl w-full space-y-12">
+        <div className="text-center">
+          <h1 className="text-3xl sm:text-4xl font-bold text-white mb-4">Get in Touch</h1>
+          <p className="text-white/60 text-lg">Feel free to reach out to me through any of these channels</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Contact Information */}
+          <div className="space-y-6">
+            <div className="flex items-start gap-4 p-6 rounded-lg bg-white/5 backdrop-blur-sm">
+              <Mail className="w-6 h-6 text-white/60 mt-1" />
+              <div>
+                <h3 className="text-white font-medium mb-1">Email</h3>
+                <a 
+                  href="mailto:info.amanmauryas@gmail.com" 
+                  className="text-white/60 hover:text-white transition-colors"
+                >
+                  info.amanmauryas@gmail.com
+                </a>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-4 p-6 rounded-lg bg-white/5 backdrop-blur-sm">
+              <MapPin className="w-6 h-6 text-white/60 mt-1" />
+              <div>
+                <h3 className="text-white font-medium mb-1">Location</h3>
+                <p className="text-white/60">India</p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-4 p-6 rounded-lg bg-white/5 backdrop-blur-sm">
+              <Phone className="w-6 h-6 text-white/60 mt-1" />
+              <div>
+                <h3 className="text-white font-medium mb-1">Phone</h3>
+                <p className="text-white/60">+91 7985637880</p>
               </div>
             </div>
           </div>
-  
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
-            <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">Send a Message</h3>
-            <form className="space-y-4">
+
+          {/* Social Links */}
+          <div className="space-y-6">
+            <div className="flex items-start gap-4 p-6 rounded-lg bg-white/5 backdrop-blur-sm">
+              <Github className="w-6 h-6 text-white/60 mt-1" />
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  id="name"
-                  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md"
-                  placeholder="Your name"
-                />
-              </div>
-              <div>
-                <button
-                  type="submit"
-                  className="w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                <h3 className="text-white font-medium mb-1">GitHub</h3>
+                <a 
+                  href="https://github.com/amanmauryas" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-white/60 hover:text-white transition-colors"
                 >
-                  Send Message
-                </button>
+                  github.com/amanmauryas
+                </a>
               </div>
-            </form>
+            </div>
+
+            <div className="flex items-start gap-4 p-6 rounded-lg bg-white/5 backdrop-blur-sm">
+              <Linkedin className="w-6 h-6 text-white/60 mt-1" />
+              <div>
+                <h3 className="text-white font-medium mb-1">LinkedIn</h3>
+                <a 
+                  href="https://linkedin.com/in/amanmauryas" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-white/60 hover:text-white transition-colors"
+                >
+                  linkedin.com/in/amanmauryas
+                </a>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-4 p-6 rounded-lg bg-white/5 backdrop-blur-sm">
+              <Twitter className="w-6 h-6 text-white/60 mt-1" />
+              <div>
+                <h3 className="text-white font-medium mb-1">Twitter</h3>
+                <a 
+                  href="https://twitter.com/amanmauryas" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-white/60 hover:text-white transition-colors"
+                >
+                  twitter.com/amanmauryas
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
-  
   );
 };
 
