@@ -1,149 +1,91 @@
 import React from 'react';
-import { Code2, Globe, Database, Smartphone, Github, ExternalLink } from 'lucide-react';
+import { Github, ExternalLink, Code, Laptop, Bot, Database } from 'lucide-react';
 
 const Projects: React.FC = () => {
   const projects = [
     {
-      icon: <Code2 className="w-6 h-6" />,
-      title: 'AI-Powered Portfolio Generator',
-      description: 'A web application that uses AI to generate personalized portfolio websites based on user input and preferences.',
-      technologies: ['React', 'TypeScript', 'OpenAI API', 'Tailwind CSS', 'Node.js'],
-      github: 'https://github.com/yourusername/portfolio-generator',
-      demo: 'https://portfolio-generator-demo.com',
-      image: '/images/portfolio-generator.png',
-      features: [
-        'AI-powered content generation',
-        'Customizable templates',
-        'Real-time preview',
-        'Responsive design'
-      ]
+      title: 'Portfolio Website',
+      description: 'Modern portfolio built with React, TypeScript, and Tailwind CSS',
+      tech: ['React', 'TypeScript', 'Tailwind'],
+      github: 'https://github.com/username/portfolio',
+      demo: 'https://portfolio.dev',
+      icon: <Laptop className="text-[#ff9c43]" size={20} />
     },
     {
-      icon: <Globe className="w-6 h-6" />,
-      title: 'E-commerce Analytics Dashboard',
-      description: 'A comprehensive analytics dashboard for e-commerce businesses with real-time data visualization and insights.',
-      technologies: ['React', 'D3.js', 'Python', 'FastAPI', 'PostgreSQL'],
-      github: 'https://github.com/yourusername/ecommerce-analytics',
-      demo: 'https://ecommerce-analytics-demo.com',
-      image: '/images/analytics-dashboard.png',
-      features: [
-        'Real-time data visualization',
-        'Custom report generation',
-        'Sales forecasting',
-        'Inventory management'
-      ]
+      title: 'AI Chat Assistant',
+      description: 'Real-time chat bot using OpenAI GPT-3.5 with streaming responses',
+      tech: ['Python', 'FastAPI', 'OpenAI'],
+      github: 'https://github.com/username/ai-chat',
+      demo: 'https://ai-chat.dev',
+      icon: <Bot className="text-[#ff9c43]" size={20} />
     },
     {
-      icon: <Database className="w-6 h-6" />,
-      title: 'Data Science Project Management',
-      description: 'A platform for managing and collaborating on data science projects with version control and experiment tracking.',
-      technologies: ['Python', 'Django', 'React', 'Docker', 'MLflow'],
-      github: 'https://github.com/yourusername/ds-project-manager',
-      demo: 'https://ds-project-manager-demo.com',
-      image: '/images/ds-project-manager.png',
-      features: [
-        'Experiment tracking',
-        'Model versioning',
-        'Team collaboration',
-        'Automated documentation'
-      ]
+      title: 'Data Analytics Dashboard',
+      description: 'Interactive dashboard for visualizing and analyzing business metrics',
+      tech: ['React', 'D3.js', 'Node.js'],
+      github: 'https://github.com/username/dashboard',
+      demo: 'https://dashboard.dev',
+      icon: <Database className="text-[#ff9c43]" size={20} />
     },
     {
-      icon: <Smartphone className="w-6 h-6" />,
-      title: 'Health & Fitness Tracker',
-      description: 'A mobile application for tracking health metrics, workouts, and nutrition with personalized recommendations.',
-      technologies: ['React Native', 'Firebase', 'Redux', 'Expo', 'HealthKit'],
-      github: 'https://github.com/yourusername/health-tracker',
-      demo: 'https://health-tracker-demo.com',
-      image: '/images/health-tracker.png',
-      features: [
-        'Activity tracking',
-        'Nutrition logging',
-        'Progress visualization',
-        'AI-powered recommendations'
-      ]
+      title: 'Code Editor Extension',
+      description: 'VS Code extension for enhanced coding productivity',
+      tech: ['TypeScript', 'VS Code API'],
+      github: 'https://github.com/username/code-ext',
+      demo: 'https://marketplace.visualstudio.com',
+      icon: <Code className="text-[#ff9c43]" size={20} />
     }
   ];
 
   return (
-    <div className="relative h-full w-full p-4 sm:p-8 overflow-y-auto">
-      {/* Background pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle,_rgba(255,255,255,0.1)_1px,_transparent_1px)] bg-[size:16px_16px] opacity-20"></div>
-
-      <div className="relative z-10 max-w-6xl mx-auto">
-        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 sm:mb-8">Featured Projects</h2>
-
-        <div className="grid grid-cols-1 gap-6 sm:gap-8">
+    <div className="h-full flex items-center justify-center">
+      <div className="max-w-4xl w-full px-6">
+        <div className="grid grid-cols-2 gap-4">
           {projects.map((project, index) => (
             <div
               key={index}
-              className="bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 overflow-hidden hover:bg-white/10 transition-all duration-300"
+              className="p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-all duration-300"
             >
-              <div className="flex flex-col md:flex-row">
-                {/* Project Image */}
-                <div className="w-full md:w-1/3 h-48 md:h-auto bg-white/5">
-                  <div className="w-full h-full flex items-center justify-center">
-                    {project.icon}
-                  </div>
+              <div className="flex items-start gap-3">
+                <div className="p-1.5 bg-white/5 rounded-lg">
+                  {project.icon}
                 </div>
-
-                {/* Project Content */}
-                <div className="w-full md:w-2/3 p-4 sm:p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="p-3 rounded-full bg-white/10 text-white/80">
-                      {project.icon}
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-start justify-between gap-2">
+                    <h3 className="text-base font-semibold truncate">
+                      {project.title}
+                    </h3>
+                    <div className="flex gap-2 flex-shrink-0">
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white/60 hover:text-white transition-colors"
+                      >
+                        <Github size={14} />
+                      </a>
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white/60 hover:text-white transition-colors"
+                      >
+                        <ExternalLink size={14} />
+                      </a>
                     </div>
-                    <div className="flex-1">
-                      <h3 className="text-xl font-semibold text-white">{project.title}</h3>
-                      <p className="text-white/60 mt-2 text-sm sm:text-base">{project.description}</p>
-                      
-                      {/* Technologies */}
-                      <div className="mt-4 flex flex-wrap gap-2">
-                        {project.technologies.map((tech, i) => (
-                          <span
-                            key={i}
-                            className="px-2 sm:px-3 py-1 text-xs sm:text-sm rounded-full bg-white/10 text-white/60"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-
-                      {/* Features */}
-                      <div className="mt-4">
-                        <h4 className="text-white/80 font-medium mb-2 text-sm sm:text-base">Key Features</h4>
-                        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                          {project.features.map((feature, i) => (
-                            <li key={i} className="flex items-center text-white/60 text-sm sm:text-base">
-                              <span className="w-1.5 h-1.5 rounded-full bg-white/60 mr-2"></span>
-                              {feature}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      {/* Links */}
-                      <div className="mt-6 flex flex-wrap gap-4">
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center text-white/60 hover:text-white transition-colors text-sm sm:text-base"
-                        >
-                          <Github className="w-5 h-5 mr-2" />
-                          GitHub
-                        </a>
-                        <a
-                          href={project.demo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center text-white/60 hover:text-white transition-colors text-sm sm:text-base"
-                        >
-                          <ExternalLink className="w-5 h-5 mr-2" />
-                          Live Demo
-                        </a>
-                      </div>
-                    </div>
+                  </div>
+                  <p className="text-white/60 text-xs mt-0.5 line-clamp-2">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-1.5 mt-2">
+                    {project.tech.map((tech, idx) => (
+                      <span
+                        key={idx}
+                        className="px-1.5 py-0.5 bg-white/5 rounded text-white/40 text-[10px]"
+                      >
+                        {tech}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </div>

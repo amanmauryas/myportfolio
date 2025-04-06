@@ -2,94 +2,78 @@ import React from 'react';
 import { Mail, MapPin, Phone, Github, Linkedin, Twitter } from 'lucide-react';
 
 const Contact: React.FC = () => {
+  const contactInfo = [
+    {
+      title: 'Email',
+      value: 'info.amanmauryas@gmail.com',
+      link: 'mailto:info.amanmauryas@gmail.com',
+      icon: <Mail className="text-[#ff9c43]" size={20} />
+    },
+    {
+      title: 'Location',
+      value: 'India',
+      icon: <MapPin className="text-[#ff9c43]" size={20} />
+    },
+    {
+      title: 'Phone',
+      value: '+91 7985637880',
+      icon: <Phone className="text-[#ff9c43]" size={20} />
+    },
+    {
+      title: 'GitHub',
+      value: 'github.com/amanmauryas',
+      link: 'https://github.com/amanmauryas',
+      icon: <Github className="text-[#ff9c43]" size={20} />
+    },
+    {
+      title: 'LinkedIn',
+      value: 'linkedin.com/in/amanmauryas',
+      link: 'https://linkedin.com/in/amanmauryas',
+      icon: <Linkedin className="text-[#ff9c43]" size={20} />
+    },
+    {
+      title: 'Twitter',
+      value: 'twitter.com/amanmauryas',
+      link: 'https://twitter.com/amanmauryas',
+      icon: <Twitter className="text-[#ff9c43]" size={20} />
+    }
+  ];
+
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 sm:p-8">
-      <div className="max-w-4xl w-full space-y-12">
-        <div className="text-center">
-          <h1 className="text-3xl sm:text-4xl font-bold text-white mb-4">Get in Touch</h1>
-          <p className="text-white/60 text-lg">Feel free to reach out to me through any of these channels</p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Contact Information */}
-          <div className="space-y-6">
-            <div className="flex items-start gap-4 p-6 rounded-lg bg-white/5 backdrop-blur-sm">
-              <Mail className="w-6 h-6 text-white/60 mt-1" />
-              <div>
-                <h3 className="text-white font-medium mb-1">Email</h3>
-                <a 
-                  href="mailto:info.amanmauryas@gmail.com" 
-                  className="text-white/60 hover:text-white transition-colors"
-                >
-                  info.amanmauryas@gmail.com
-                </a>
+    <div className="h-full flex items-center justify-center">
+      <div className="max-w-4xl w-full px-4 sm:px-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+          {contactInfo.map((contact, index) => (
+            <div
+              key={index}
+              className="p-3 sm:p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-all duration-300"
+            >
+              <div className="flex items-start gap-2 sm:gap-3">
+                <div className="p-1 sm:p-1.5 bg-white/5 rounded-lg flex-shrink-0">
+                  {contact.icon}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-sm sm:text-base font-semibold">
+                    {contact.title}
+                  </h3>
+                  {contact.link ? (
+                    <a
+                      href={contact.link}
+                      target={contact.link.startsWith('mailto:') ? undefined : '_blank'}
+                      rel="noopener noreferrer"
+                      className="text-white/60 hover:text-white text-xs sm:text-sm mt-0.5 block truncate transition-colors"
+                    >
+                      {contact.value}
+                    </a>
+                  ) : (
+                    <p className="text-white/60 text-xs sm:text-sm mt-0.5 truncate">
+                      {contact.value}
+                    </p>
+                  )}
+                </div>
               </div>
             </div>
-
-            <div className="flex items-start gap-4 p-6 rounded-lg bg-white/5 backdrop-blur-sm">
-              <MapPin className="w-6 h-6 text-white/60 mt-1" />
-              <div>
-                <h3 className="text-white font-medium mb-1">Location</h3>
-                <p className="text-white/60">India</p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4 p-6 rounded-lg bg-white/5 backdrop-blur-sm">
-              <Phone className="w-6 h-6 text-white/60 mt-1" />
-              <div>
-                <h3 className="text-white font-medium mb-1">Phone</h3>
-                <p className="text-white/60">+91 7985637880</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Social Links */}
-          <div className="space-y-6">
-            <div className="flex items-start gap-4 p-6 rounded-lg bg-white/5 backdrop-blur-sm">
-              <Github className="w-6 h-6 text-white/60 mt-1" />
-              <div>
-                <h3 className="text-white font-medium mb-1">GitHub</h3>
-                <a 
-                  href="https://github.com/amanmauryas" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-white/60 hover:text-white transition-colors"
-                >
-                  github.com/amanmauryas
-                </a>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4 p-6 rounded-lg bg-white/5 backdrop-blur-sm">
-              <Linkedin className="w-6 h-6 text-white/60 mt-1" />
-              <div>
-                <h3 className="text-white font-medium mb-1">LinkedIn</h3>
-                <a 
-                  href="https://linkedin.com/in/amanmauryas" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-white/60 hover:text-white transition-colors"
-                >
-                  linkedin.com/in/amanmauryas
-                </a>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4 p-6 rounded-lg bg-white/5 backdrop-blur-sm">
-              <Twitter className="w-6 h-6 text-white/60 mt-1" />
-              <div>
-                <h3 className="text-white font-medium mb-1">Twitter</h3>
-                <a 
-                  href="https://twitter.com/amanmauryas" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-white/60 hover:text-white transition-colors"
-                >
-                  twitter.com/amanmauryas
-                </a>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
