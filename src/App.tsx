@@ -72,10 +72,13 @@ const App: React.FC = () => {
     <div className="h-screen bg-[#0a0a0a] text-white overflow-hidden">
       <style>
         {`
-          @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
           * {
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
           }
 
           .nav-dot {
@@ -121,11 +124,7 @@ const App: React.FC = () => {
       </style>
 
       {/* Logo */}
-      <div className="fixed top-8 left-8 text-2xl font-bold">
-        <span className="text-[#ff9c43]">[</span>
-        <span className="text-[#ff9c43] ml-1">Aman</span>
-        <span className="text-[#ff9c43]">]</span>
-      </div>
+    
 
       {/* Page Title */}
       {activeSection !== 'hero' && (
